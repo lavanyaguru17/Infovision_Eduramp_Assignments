@@ -37,6 +37,9 @@ TelecomCallManagementSystem/
     PrepaidPlan.java
     PostpaidPlan.java
     PlanFactory.java
+    
+ manager/                                 # Singleton call log manager
+    CallManager.java                
 
   billing/                                 # Billing logic (Singleton)
     BillingEngine.java
