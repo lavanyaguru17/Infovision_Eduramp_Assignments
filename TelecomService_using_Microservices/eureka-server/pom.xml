@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven Project Object Model configuration file -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent project: Spring Boot starter parent, helps with default configuration and dependency versions -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.4</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<!-- Project metadata -->
+	<groupId>com.example</groupId>
+	<artifactId>eureka-server</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>eureka-server</name>
+	<description>Eureka Server</description>
+
+	<!-- Property definitions -->
+	<properties>
+		<java.version>11</java.version> <!-- Java version used for compilation -->
+		<spring-cloud.version>2020.0.2</spring-cloud.version> <!-- Spring Cloud BOM version -->
+	</properties>
+
+	<!-- Project dependencies -->
+	<dependencies>
+
+		<!-- Spring Cloud Netflix Eureka Server: enables Eureka server functionality -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
+		</dependency>
+
+		<!-- Spring Boot test starter: includes JUnit, Mockito, etc., for writing unit tests -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope> <!-- Only included during testing -->
+		</dependency>
+
+	</dependencies>
+
+	<!-- Dependency management block for importing Spring Cloud BOM (Bill of Materials) -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Build plugins section -->
+	<build>
+		<plugins>
+
+			<!-- Spring Boot Maven Plugin: used to build executable jar/war -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+
+		</plugins>
+	</build>
+
+</project>

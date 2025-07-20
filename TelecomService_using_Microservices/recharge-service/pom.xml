@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Project Object Model (POM) file defining build and dependency config for RechargeService -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Indicates the version of the POM model being used -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Inherits from Spring Boot's parent POM to manage default versions and plugins -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.5.3</version>
+		<relativePath/> <!-- Lookup parent from repository -->
+	</parent>
+
+	<!-- Basic identifiers for this microservice -->
+	<groupId>com.example</groupId>
+	<artifactId>recharge-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>recharge-service</name>
+	<description>Recharge Service</description>
+
+	<!-- Optional project metadata (can be filled for publishing or versioning tools) -->
+	<url/>
+	<licenses>
+		<license/>
+	</licenses>
+	<developers>
+		<developer/>
+	</developers>
+	<scm>
+		<connection/>
+		<developerConnection/>
+		<tag/>
+		<url/>
+	</scm>
+
+	<!-- Define Java and Spring Cloud versions used in the project -->
+	<properties>
+		<java.version>17</java.version>
+		<spring-cloud.version>2025.0.0</spring-cloud.version>
+	</properties>
+
+	<!-- Define all runtime and test dependencies -->
+	<dependencies>
+
+		<!-- Spring Boot Actuator: for health checks and monitoring endpoints -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Spring Data JPA: ORM framework integration for relational DB access -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- Spring Web: for building RESTful web services -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Eureka Client: enables service registration and discovery with Eureka Server -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- OpenFeign: declarative REST client for service-to-service communication -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<!-- PostgreSQL JDBC Driver: for PostgreSQL database connectivity -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.6.0</version>
+		</dependency>
+
+		<!-- Testing dependencies (JUnit, Mockito, etc.) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope> <!-- Only used during testing -->
+		</dependency>
+	</dependencies>
+
+	<!-- Manage dependency versions through Spring Cloud BOM -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Maven build plugins -->
+	<build>
+		<plugins>
+			<!-- Enables building executable Spring Boot JARs -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

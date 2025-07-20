@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Project Object Model (POM) for the API Gateway microservice -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Defines the POM model version used -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Parent POM: Spring Boot’s starter parent provides default configuration -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.4.4</version>
+		<relativePath/> <!-- Look up parent from repository -->
+	</parent>
+
+	<!-- Basic project coordinates and metadata -->
+	<groupId>com.example</groupId>
+	<artifactId>apigateway</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>apigateway</name>
+	<description>API Gateway</description>
+
+	<!-- Project-level properties -->
+	<properties>
+		<java.version>11</java.version>
+		<spring-cloud.version>2020.0.2</spring-cloud.version>
+	</properties>
+
+	<!-- Dependencies required for building the API Gateway -->
+	<dependencies>
+
+		<!-- Spring Boot Actuator: provides production-ready features such as health checks and metrics -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+
+		<!-- Spring Cloud Gateway: main dependency to enable API Gateway functionality -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-gateway</artifactId>
+		</dependency>
+
+		<!-- Eureka Client: enables service registration and discovery with Eureka server -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- Spring Boot Starter Test: includes testing libraries like JUnit and Mockito -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope> <!-- Only included in test scope -->
+		</dependency>
+	</dependencies>
+
+	<!-- Dependency Management for importing Spring Cloud BOM (Bill of Materials) -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope> <!-- Imports version-controlled dependency definitions -->
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- Build configuration -->
+	<build>
+		<plugins>
+			<!-- Spring Boot Maven Plugin: used to build and package Spring Boot applications -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>

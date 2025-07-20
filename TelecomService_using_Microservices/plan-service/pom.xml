@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Maven Project Object Model for Plan Service microservice -->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+           https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<!-- Defines which POM model version this project uses -->
+	<modelVersion>4.0.0</modelVersion>
+
+	<!-- Spring Boot parent for dependency and plugin management -->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>3.3.5</version>
+		<relativePath/> <!-- Lookup parent from repository instead of relative path -->
+	</parent>
+
+	<!-- Basic project identifiers -->
+	<groupId>com.example</groupId>
+	<artifactId>plan-service</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<name>plan-service</name>
+	<description>Plan Service</description>
+
+	<!-- Project properties -->
+	<properties>
+		<java.version>21</java.version>
+		<spring-cloud.version>2023.0.4</spring-cloud.version>
+	</properties>
+
+	<!-- Import Spring Cloud dependency versions for compatibility -->
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring-cloud.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<dependencies>
+		<!-- For building RESTful APIs -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!-- Spring Data JPA for persistence layer -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<!-- PostgreSQL database driver -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.6.0</version>
+		</dependency>
+
+		<!-- Lombok to reduce boilerplate code (getters/setters, constructors, etc.) -->
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<!-- Eureka client for service registration and discovery -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+
+		<!-- Testing utilities (JUnit, Mockito, etc.) -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope> <!-- Only included in test phase -->
+		</dependency>
+	</dependencies>
+
+	<!-- Build configuration -->
+	<build>
+		<plugins>
+			<!-- Spring Boot plugin to build executable JARs and handle packaging -->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
